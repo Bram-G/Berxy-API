@@ -1,5 +1,5 @@
-const { Schema, Typers } = require("mongoose");
-const Item = new Schema(
+const { Schema, model, Types } = require("mongoose");
+const watchSchema = new Schema(
   {
     name: {
       type: Schema.Types.String,
@@ -9,8 +9,11 @@ const Item = new Schema(
       type: Schema.Types.String,
       required: true,
     },
-    images: {
+    mainImage:{
       type: Schema.Types.String,
+    },
+    images: {
+      type: Schema.Types.Array,
       required: true,
     },
     price: {
@@ -25,5 +28,5 @@ const Item = new Schema(
     id: false,
   }
 );
-
-module.exports = Item;
+const Watch = model("Watch", watchSchema);
+module.exports = Watch;

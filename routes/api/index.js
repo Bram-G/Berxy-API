@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const itemRoutes = require('./itemRoutes');
+const watchRoutes = require('./watchRoutes');
 
-router.use('/items', itemRoutes);
+router.use('/watches', watchRoutes);
 
 module.exports = router;

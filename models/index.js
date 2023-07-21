@@ -1,3 +1,3 @@
-const Item = require('./Item');
+const Watch = require('./Watches');
 
-module.exports = { Item };
+module.exports = { Watch};

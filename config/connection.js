@@ -1,8 +1,5 @@
 const { connect, connection } = require('mongoose');
 
-connect('mongodb://localhost/berxyapi', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+connect('mongodb://127.0.0.1:27017/Berxy');
 
 module.exports = connection;

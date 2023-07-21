@@ -1,17 +1,17 @@
-const Item = require("../models/itemModel");
+const Watch = require("../models/Watches");
 
 module.exports = {
-  getItems(req, res) {
-    Item.find()
-      .then((items) => res.json(items))
+  getAllWatches(req, res) {
+    Watch.find()
+      .then((watches) => res.json(watches))
       .catch((err) => res.status(422).json(err));
   },
-  getSingleItem(req, res) {
-    Item.findOne({ _id: req.params.itemId })
+  getWatchById(req, res) {
+    Watch.findOne({ _id: req.params.watchId })
       .select("-__v")
-      .then((item) => !item
+      .then((watch) => !watch
       ?res.status(404).json({ message: "No item found with this id!" })
-      : res.json(item)
+      : res.json(watch)
       )
       .catch((err) => res.status(422).json(err));
   },
