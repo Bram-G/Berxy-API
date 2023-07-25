@@ -9,12 +9,17 @@ const watchSchema = new Schema(
       type: Schema.Types.String,
       required: true,
     },
+    brand: {
+      type: Schema.Types.String,
+    },
     mainImage:{
       type: Schema.Types.String,
     },
-    images: {
-      type: Schema.Types.Array,
-      required: true,
+    image1: {
+      type: Schema.Types.String,
+    },
+    image2: {
+      type: Schema.Types.String,
     },
     price: {
       type: Schema.Types.Number,
