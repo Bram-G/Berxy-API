@@ -1,11 +1,14 @@
 const router = require('express').Router();
 const watchRoutes = require('./watchRoutes');
-const { getRandomWatch, getWatchByBrand } = require('../../controllers/itemController');
+const randomRoutes = require('./randomRoutes');
+const { getWatchByBrand, getAllBrands } = require('../../controllers/itemController');
 
 router.use('/watches', watchRoutes);
 
-router.route('/random').get(getRandomWatch);
+router.use('/random', randomRoutes)
 
-router.route('/:brand').get(getWatchByBrand);
+router.route('/brand').get(getAllBrands);
+
+router.route('/brand/:brand').get(getWatchByBrand);
 
 module.exports = router;

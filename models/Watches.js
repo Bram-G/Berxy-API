@@ -25,6 +25,9 @@ const watchSchema = new Schema(
       type: Schema.Types.Number,
       required: true,
     },
+    movement:{
+      type: Schema.Types.String,
+    }
   },
   {
     toJSON: {

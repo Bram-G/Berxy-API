@@ -22,9 +22,24 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   getWatchByBrand(req, res) {
-
   Watch.find({ brand: req.params.brand })
     .then((watch) => res.json(watch))
     .catch((err) => res.status(422).json(err));
+  },
+  getRandomBrand(req, res) {
+    Watch.aggregate([{ $sample: { size: 1 } }])
+      .then((watchArray) => {
+        const watch = watchArray[0];
+        if (!watch) {
+          return res.status(404).json({ error: 'No watches found in the database.' });
+        }
+        res.json({ brand: watch.brand });
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+  getAllBrands(req, res) {
+    Watch.distinct('brand')
+      .then((brands) => res.json(brands))
+      .catch((err) => res.status(422).json(err));
   },
 };
