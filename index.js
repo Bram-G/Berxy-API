@@ -1,23 +1,20 @@
 const express = require('express');
 const db = require('./config/connection');
 const routes = require('./routes');
+const cors = require('cors')
+require('dotenv').config();
 
-const cwd = process.cwd();
-
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const cors = require("cors");
 app.use(cors());
 
 
-// Note: not necessary for the Express server to function. This just helps indicate what activity's server is running in the terminal.
-const activity = cwd.includes('01-Activities')
-  ? cwd.split('/01-Activities/')[1]
-  : cwd;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(routes);
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
+  app.use(cors())
+  app.use(routes);
 
 db.once('open', () => {
   app.listen(PORT, () => {
